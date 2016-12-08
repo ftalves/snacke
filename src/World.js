@@ -1,5 +1,5 @@
-function World() {
-  this.canvas = document.getElementById('crazyCanvas');
+function World(canvas) {
+  this.canvas = canvas;
   this.ctx = this.canvas.getContext('2d');
   this.snake = new Snake(this.ctx, {x: 300, y: 300});
   this.food = new Food(this.ctx, getRandomCoords(this.canvas));

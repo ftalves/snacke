@@ -93,8 +93,8 @@ function Snake(ctx, coords) {
   }
 }
 
-function World() {
-  this.canvas = document.getElementById('crazyCanvas');
+function World(canvas) {
+  this.canvas = canvas;
   this.ctx = this.canvas.getContext('2d');
   this.snake = new Snake(this.ctx, {x: 300, y: 300});
   this.food = new Food(this.ctx, getRandomCoords(this.canvas));
@@ -171,6 +171,11 @@ function World() {
   };
 }
 
-var world = new World();
-// console.log()
+var canvas = document.createElement('canvas');
+canvas.width = 400;
+canvas.height = 400;
+
+document.getElementById("snacke").appendChild(canvas);
+
+var world = new World(canvas);
 window.setInterval(world.draw.bind(world), 160);
