@@ -1,0 +1,12 @@
+{
+  "name": "snacke",
+  "version": "1.0.0",
+  "description": "A little snake game made with Vanilla.js",
+  "main": "dist/snake.js",
+  "author": "Felipe Alves",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1"
+  }
+}
