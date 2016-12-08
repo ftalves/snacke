@@ -9,8 +9,18 @@ module.exports = function(grunt) {
         src: ['src/css/main.css'],
         dest: 'dist/css/main.css'
       }
+    },
+    watch: {
+      scripts: {
+        files: ['src/*.js', 'src/css/*.css'],
+        tasks: ['dev-watch'],
+        options: {
+            interrupt: true
+        }
+      }
     }
   });
-
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.registerTask('dev-watch', ['concat']);
 };
