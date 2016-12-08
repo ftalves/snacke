@@ -2,7 +2,7 @@
   "name": "snacke",
   "version": "1.0.0",
   "description": "A little snake game made with Vanilla.js",
-  "main": "dist/snake.js",
+  "main": "dist/snacke.js",
   "author": "Felipe Alves",
   "license": "ISC",
   "devDependencies": {

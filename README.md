@@ -1,2 +1,2 @@
 # snacke
-Little snake game made with Vanilla.js.
+A little snake game made with Vanilla.js.
