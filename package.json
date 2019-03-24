@@ -2,12 +2,14 @@
   "name": "snacke",
   "version": "1.0.0",
   "description": "A little snake game made with Vanilla.js",
-  "main": "dist/snacke.js",
+  "scripts": {
+    "build": "webpack --config webpack.config.js"
+  },
   "author": "Felipe Alves",
   "license": "ISC",
   "devDependencies": {
-    "grunt": "^1.0.1",
-    "grunt-contrib-concat": "^1.0.1",
-    "grunt-contrib-watch": "^1.0.0"
-  }
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  },
+  "dependencies": {}
 }
