@@ -1,7 +1,7 @@
 {
   "name": "snacke",
   "version": "1.0.0",
-  "description": "A little snake game made with Vanilla.js",
+  "description": "A little snake game made with Ramda.js",
   "scripts": {
     "build": "webpack --config webpack.config.js"
   },
@@ -11,5 +11,7 @@
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "ramda": "^0.26.1"
+  }
 }
