@@ -1,7 +1,10 @@
-import { move, isEating, grow } from './snake'
+import { any, equals, map, addIndex, length, last } from 'ramda'
+import { isCollidingFood } from './collision'
+import { grow } from './../engine/snake'
+import { move } from './../engine/movement'
 
 export const next = (prevState, direction) => {
-  const eating = isEating(prevState)
+  const eating = isCollidingFood(prevState)
   const [head, ...tail] = prevState.snake
 
   return {

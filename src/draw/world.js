@@ -1,6 +1,6 @@
-import { drawHead, drawBody, drawFood, drawEatenFood } from './../draw/shapes'
+import { drawHead, drawBody, drawFood } from './shapes'
 
-export const draw = ({ snake, food, eatenFoods }) => {
+export const draw = ({ snake, food }) => {
   const [head, ...tail] = snake
 
   drawHead(head)

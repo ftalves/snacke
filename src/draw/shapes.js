@@ -1,36 +1,37 @@
-import { ctx, distanceUnit } from './canvas'
+import { ctx } from './canvas'
+import { SIZE_UNIT } from './../defaults'
 
-const drawHead = ({ coords }) => {
+const draw = runDrawing => {
   ctx.beginPath()
-  ctx.fillStyle = '#AAFFA0'
-  ctx.fillRect(coords.x, coords.y, distanceUnit, distanceUnit)
+  runDrawing()
   ctx.closePath()
 }
-
-const drawBody = ({ coords, hasFood }) => {
-  ctx.beginPath()
+const drawHead = ({ coords }) => draw(() => {
   ctx.fillStyle = '#AAFFA0'
-  ctx.fillRect(coords.x, coords.y, distanceUnit, distanceUnit)
+  ctx.fillRect(coords.x, coords.y, SIZE_UNIT, SIZE_UNIT)
+})
 
-  const spotRadius = distanceUnit / 4
-  const spotX = coords.x + (distanceUnit / 2)
-  const spotY = coords.y + (distanceUnit / 2)
+const drawBody = ({ coords, hasFood }) => draw(() => {
+  ctx.fillStyle = '#AAFFA0'
+  ctx.fillRect(coords.x, coords.y, SIZE_UNIT, SIZE_UNIT)
+
+  if (hasFood) {
+    return drawFood({ coords, color: '#C6CB82' })
+  }
+
+  const spotRadius = SIZE_UNIT / 4
+  const spotX = coords.x + (SIZE_UNIT / 2)
+  const spotY = coords.y + (SIZE_UNIT / 2)
   ctx.fillStyle = '#FFF'
   ctx.arc(spotX, spotY, spotRadius, 0, 2 * Math.PI, false)
   ctx.fill()
-  ctx.closePath()
-  if (hasFood) {
-    drawFood({ coords, color: '#C6CB82' })
-  }
-}
+})
 
-const drawFood = ({ coords, color }) => {
-  ctx.beginPath()
-  const radius = distanceUnit / 2
+const drawFood = ({ coords, color }) => draw(() => {
+  const radius = SIZE_UNIT / 2
   ctx.fillStyle = color || '#FF6347'
   ctx.arc(coords.x + radius, coords.y + radius, radius, 0, 2 * Math.PI, false)
   ctx.fill()
-  ctx.closePath()
-}
+})
 
 export { drawHead, drawBody, drawFood }
