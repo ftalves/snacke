@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/game.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/run.js");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -4106,18 +4106,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 /***/ }),
 
-/***/ "./src/game.js":
-/*!*********************!*\
-  !*** ./src/game.js ***!
-  \*********************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var ramda__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ramda */ \"./node_modules/ramda/es/index.js\");\n/* harmony import */ var _io__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./io */ \"./src/io.js\");\n/* harmony import */ var _defaults__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./defaults */ \"./src/defaults.js\");\n/* harmony import */ var _draw_world__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./draw/world */ \"./src/draw/world.js\");\n/* harmony import */ var _draw_canvas__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./draw/canvas */ \"./src/draw/canvas.js\");\n/* harmony import */ var _state_next__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./state/next */ \"./src/state/next.js\");\n/* harmony import */ var _state_collision__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./state/collision */ \"./src/state/collision.js\");\n\n\n\n\n\n\n\n\n\n\n\nconst randomCoord = { x: 200, y: 200 }\n\nconst keys = Object(_io__WEBPACK_IMPORTED_MODULE_1__[\"keypress\"])()\n\nconst run = state => {\n  if (Object(_state_collision__WEBPACK_IMPORTED_MODULE_6__[\"isCollidingSelf\"])(state.snake)) {\n    return alert(`GAME OVER! Final Score: ${state.score}`)\n  }\n\n  Object(_draw_canvas__WEBPACK_IMPORTED_MODULE_4__[\"clearCanvas\"])()\n  Object(_draw_world__WEBPACK_IMPORTED_MODULE_3__[\"draw\"])(state)\n  setTimeout(() => run(Object(_state_next__WEBPACK_IMPORTED_MODULE_5__[\"next\"])(state, keys.direction())), 100)\n}\n\nrun({\n  snake: [\n    { coords: { x: 400, y: 400 } },\n    { coords: { x: 400 - _defaults__WEBPACK_IMPORTED_MODULE_2__[\"SIZE_UNIT\"],       y: 400 } },\n    { coords: { x: 400 - (_defaults__WEBPACK_IMPORTED_MODULE_2__[\"SIZE_UNIT\"] * 2), y: 400 } },\n    { coords: { x: 400 - (_defaults__WEBPACK_IMPORTED_MODULE_2__[\"SIZE_UNIT\"] * 3), y: 400 } },\n    { coords: { x: 400 - (_defaults__WEBPACK_IMPORTED_MODULE_2__[\"SIZE_UNIT\"] * 4), y: 400 } },\n  ],\n  food: { coords: randomCoord },\n  score: 0,\n})\n\n\n//# sourceURL=webpack:///./src/game.js?");
-
-/***/ }),
-
 /***/ "./src/io.js":
 /*!*******************!*\
   !*** ./src/io.js ***!
@@ -4127,6 +4115,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var ramd
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"keypress\", function() { return keypress; });\n/* harmony import */ var ramda__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ramda */ \"./node_modules/ramda/es/index.js\");\n/* harmony import */ var _defaults__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./defaults */ \"./src/defaults.js\");\n\n\n\nconst directionIsValid = (prevDirection, nextDirection) => ({\n  37: !(nextDirection == 39),\n  38: !(nextDirection == 40),\n  39: !(nextDirection == 37),\n  40: !(nextDirection == 38),\n})[prevDirection]\n\nconst keypress = () => {\n  let direction = _defaults__WEBPACK_IMPORTED_MODULE_1__[\"RIGHT\"]\n  document.addEventListener('keydown', ({ keyCode }) => {\n    const canChangeDirection = directionIsValid(direction, keyCode)\n      && Object(ramda__WEBPACK_IMPORTED_MODULE_0__[\"any\"])(Object(ramda__WEBPACK_IMPORTED_MODULE_0__[\"equals\"])(keyCode), [_defaults__WEBPACK_IMPORTED_MODULE_1__[\"UP\"], _defaults__WEBPACK_IMPORTED_MODULE_1__[\"DOWN\"], _defaults__WEBPACK_IMPORTED_MODULE_1__[\"LEFT\"], _defaults__WEBPACK_IMPORTED_MODULE_1__[\"RIGHT\"]])\n\n    direction = canChangeDirection ? keyCode : direction\n  })\n\n  return {\n    direction: () => direction\n  }\n}\n\n\n\n\n//# sourceURL=webpack:///./src/io.js?");
+
+/***/ }),
+
+/***/ "./src/run.js":
+/*!********************!*\
+  !*** ./src/run.js ***!
+  \********************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var ramda__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ramda */ \"./node_modules/ramda/es/index.js\");\n/* harmony import */ var _io__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./io */ \"./src/io.js\");\n/* harmony import */ var _defaults__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./defaults */ \"./src/defaults.js\");\n/* harmony import */ var _draw_world__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./draw/world */ \"./src/draw/world.js\");\n/* harmony import */ var _draw_canvas__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./draw/canvas */ \"./src/draw/canvas.js\");\n/* harmony import */ var _state_next__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./state/next */ \"./src/state/next.js\");\n/* harmony import */ var _state_collision__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./state/collision */ \"./src/state/collision.js\");\n\n\n\n\n\n\n\n\n\n\n\nconst randomCoord = { x: 200, y: 200 }\n\nconst keys = Object(_io__WEBPACK_IMPORTED_MODULE_1__[\"keypress\"])()\n\nconst run = state => {\n  if (Object(_state_collision__WEBPACK_IMPORTED_MODULE_6__[\"isCollidingSelf\"])(state.snake)) {\n    return alert(`GAME OVER! Final Score: ${state.score}`)\n  }\n\n  Object(_draw_canvas__WEBPACK_IMPORTED_MODULE_4__[\"clearCanvas\"])()\n  Object(_draw_world__WEBPACK_IMPORTED_MODULE_3__[\"draw\"])(state)\n  setTimeout(() => run(Object(_state_next__WEBPACK_IMPORTED_MODULE_5__[\"next\"])(state, keys.direction())), 100)\n}\n\nrun({\n  snake: [\n    { coords: { x: 400, y: 400 } },\n    { coords: { x: 400 - _defaults__WEBPACK_IMPORTED_MODULE_2__[\"SIZE_UNIT\"],       y: 400 } },\n    { coords: { x: 400 - (_defaults__WEBPACK_IMPORTED_MODULE_2__[\"SIZE_UNIT\"] * 2), y: 400 } },\n    { coords: { x: 400 - (_defaults__WEBPACK_IMPORTED_MODULE_2__[\"SIZE_UNIT\"] * 3), y: 400 } },\n    { coords: { x: 400 - (_defaults__WEBPACK_IMPORTED_MODULE_2__[\"SIZE_UNIT\"] * 4), y: 400 } },\n  ],\n  food: { coords: randomCoord },\n  score: 0,\n})\n\n\n//# sourceURL=webpack:///./src/run.js?");
 
 /***/ }),
 
