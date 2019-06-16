@@ -1,5 +1,5 @@
 import { any, equals, map, addIndex, length, last } from 'ramda'
-import { canvas } from './../draw/canvas'
+import { canvas } from '@/draw/canvas'
 
 const isCollidingSelf = snake => {
   const [head, ...tail] = snake

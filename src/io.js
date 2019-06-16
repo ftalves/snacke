@@ -1,5 +1,5 @@
 import { any, equals } from 'ramda'
-import { UP, DOWN, LEFT, RIGHT, SIZE_UNIT } from './defaults'
+import { UP, DOWN, LEFT, RIGHT, SIZE_UNIT } from '@/defaults'
 
 const directionIsValid = (prevDirection, nextDirection) => ({
   37: !(nextDirection == 39),

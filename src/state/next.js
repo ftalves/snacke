@@ -1,8 +1,8 @@
 import { any, equals, map, addIndex, length, last } from 'ramda'
-import { isCollidingFood } from './collision'
-import { move } from './../engine/movement'
-import { grow } from './../engine/snake'
-import { respawn } from './../engine/food'
+import { isCollidingFood } from '@/state/collision'
+import { move } from '@/engine/movement'
+import { grow } from '@/engine/snake'
+import { respawn } from '@/engine/food'
 
 export const next = (prevState, direction) => {
   const eating = isCollidingFood(prevState)

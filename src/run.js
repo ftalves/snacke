@@ -1,13 +1,13 @@
 import { any, equals } from 'ramda'
 
-import { keypress } from './io'
-import { SIZE_UNIT } from './defaults'
+import { keypress } from '@/io'
+import { SIZE_UNIT } from '@/defaults'
 
-import { draw } from './draw/world'
-import { clearCanvas } from './draw/canvas'
+import { draw } from '@/draw/world'
+import { clearCanvas } from '@/draw/canvas'
 
-import { next } from './state/next'
-import { isCollidingSelf, isCollidingBorder } from './state/collision'
+import { next } from '@/state/next'
+import { isCollidingSelf, isCollidingBorder } from '@/state/collision'
 
 const randomCoord = { x: 520, y: 280 }
 

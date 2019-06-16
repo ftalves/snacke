@@ -12,6 +12,7 @@
     "webpack-cli": "^3.3.0"
   },
   "dependencies": {
+    "directory-named-webpack-plugin": "^4.0.1",
     "ramda": "^0.26.1"
   }
 }

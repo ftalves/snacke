@@ -1,5 +1,5 @@
-import { ctx } from './canvas'
-import { SIZE_UNIT } from './../defaults'
+import { ctx } from '@/draw/canvas'
+import { SIZE_UNIT } from '@/defaults'
 
 const draw = runDrawing => {
   ctx.beginPath()

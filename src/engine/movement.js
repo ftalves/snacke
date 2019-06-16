@@ -1,5 +1,5 @@
 import { any, equals, map, addIndex, length, last, cond, always } from 'ramda'
-import { SIZE_UNIT } from './../defaults'
+import { SIZE_UNIT } from '@/defaults'
 
 const mapIndexed = addIndex(map)
 
