@@ -1,12 +1,14 @@
 # snacke
 A little snake game made with Ramda.js.
 
-TODO:
+## CHANGELOG:
+### 2019-06-17
+- Major refactor in code structure (readability, state management)
 
-- Refactor / structure code (very ugly)
+## TODO:
 - Add lint
 - Fix multiple keypresses bug
-- Add food respawn after eating
+- Smart food respawn
 - Add mirror movement when hitting walls
 - Add menu screen
 - Add current score and high scores
