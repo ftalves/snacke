@@ -4,3 +4,4 @@ export const RIGHT = 39
 export const DOWN  = 40
 
 export const SIZE_UNIT = 40
+export const TICK_INTERVAL = 100

@@ -1,7 +1,7 @@
 import { any, equals } from 'ramda'
 
 import { keypress } from '@/io'
-import { SIZE_UNIT } from '@/defaults'
+import { SIZE_UNIT, TICK_INTERVAL, RIGHT } from '@/defaults'
 
 import { draw } from '@/draw/world'
 import { clearCanvas } from '@/draw/canvas'
@@ -20,17 +20,22 @@ const run = state => {
 
   clearCanvas()
   draw(state)
-  setTimeout(() => run(next(state, keys.direction())), 100)
+  // setTimeout(() => run(next(state, keys.direction())), TICK_INTERVAL)
+  setTimeout(() => run(next({
+    ...state,
+    direction: keys.direction(),
+  })), TICK_INTERVAL)
 }
 
 run({
+  direction: RIGHT,
   snake: [
     { coords: { x: 280, y: 400 } },
     { coords: { x: 280 - SIZE_UNIT,       y: 400 } },
     { coords: { x: 280 - (SIZE_UNIT * 2), y: 400 } },
     { coords: { x: 280 - (SIZE_UNIT * 3), y: 400 } },
-    { coords: { x: 280 - (SIZE_UNIT * 4), y: 400 } },
   ],
+  trail: { coords: { x: 280 - (SIZE_UNIT * 4), y: 400 } },
   food: { coords: randomCoord },
   score: 0,
 })

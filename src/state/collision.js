@@ -7,7 +7,6 @@ const isCollidingSelf = snake => {
 }
 
 const isCollidingBorder = snake => {
-  console.log(snake[0].x, canvas.width);
   return snake[0].coords.x > canvas.width - 40
     || snake[0].coords.x < 0
     || snake[0].coords.y < 0

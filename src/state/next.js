@@ -1,26 +1,16 @@
-import { any, equals, map, addIndex, length, last } from 'ramda'
-import { isCollidingFood } from '@/state/collision'
-import { move } from '@/engine/movement'
-import { grow } from '@/engine/snake'
+import { any, equals, map, addIndex, length, last, pipe } from 'ramda'
+
 import { respawn } from '@/engine/food'
+import { move } from '@/engine/movement'
+import { grow } from '@/engine/grow'
+import { eat } from '@/engine/eat'
 
-export const next = (prevState, direction) => {
-  const eating = isCollidingFood(prevState)
-  const [head, ...tail] = prevState.snake
-  if (eating) {
-    console.log(prevState.food, respawn(prevState));
+import { isCollidingFood } from '@/state/collision'
 
-  }
-  return {
-    ...prevState,
-    snake: grow(prevState.snake, move([
-      {
-        ...head,
-        hasFood: eating,
-      },
-      ...tail,
-    ], direction)),
-    food: eating ? respawn(prevState) : prevState.food,
-    score: eating ? prevState.score + 1 : prevState.score,
-  }
-}
+const maybeEat = state =>
+  isCollidingFood(state) ? eat(state) : state
+
+const maybeGrow = state =>
+  last(state.snake).digesting ? grow(state) : state
+
+export const next = pipe(move, maybeEat, maybeGrow)

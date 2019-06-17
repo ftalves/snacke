@@ -1,10 +1,11 @@
 import { drawHead, drawBody, drawFood } from '@/draw/shapes'
 
 export const draw = ({ snake, food }) => {
-  const [head, ...tail] = snake
+  const [head, ...body] = snake
 
   drawHead(head)
-  for (const slice of tail) {
+  for (const slice of body) {
+    // console.log(slice);
     drawBody(slice)
   }
 

@@ -1,4 +1,4 @@
-import { any, equals, map, addIndex, length, last, cond, always } from 'ramda'
+import { any, equals, map, addIndex, length, last, cond, always, pipe } from 'ramda'
 import { SIZE_UNIT } from '@/defaults'
 
 const mapIndexed = addIndex(map)
@@ -10,13 +10,29 @@ const moveHead = ({ x, y }, direction) => cond([
   [equals(40), always({ y: y + SIZE_UNIT, x })],
 ])(direction)
 
-const move = (snake, direction) => {
-  return mapIndexed((slice, i) => {
-    const isHead = i == 0
-    return {
-      coords: isHead ? moveHead(slice.coords, direction) : snake[i - 1].coords,
-      hasFood: isHead ? false : snake[i - 1].hasFood,
-    }
-  }, snake)
-}
+// const move = (state, direction) => ({
+//   ...state,
+//   snake: [
+//     ...mapIndexed((slice, i) => i == 0 ? {
+//       coords: moveHead(slice.coords, direction)
+//     } : state.snake[i - 1], state.snake),
+//   ],
+// })
+
+const generateTrail = state => ({
+  ...state,
+  trail: { coords: last(state.snake).coords },
+})
+
+const moveBody = state => ({
+  ...state,
+  snake: [
+    ...mapIndexed((slice, i) => i == 0 ? {
+      coords: moveHead(slice.coords, state.direction)
+    } : state.snake[i - 1], state.snake),
+  ],
+})
+
+const move = pipe(generateTrail, moveBody)
+
 export { move }

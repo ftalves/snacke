@@ -11,11 +11,11 @@ const drawHead = ({ coords }) => draw(() => {
   ctx.fillRect(coords.x, coords.y, SIZE_UNIT, SIZE_UNIT)
 })
 
-const drawBody = ({ coords, hasFood }) => draw(() => {
+const drawBody = ({ coords, digesting }) => draw(() => {
   ctx.fillStyle = '#AAFFA0'
   ctx.fillRect(coords.x, coords.y, SIZE_UNIT, SIZE_UNIT)
 
-  if (hasFood) {
+  if (digesting) {
     return drawFood({ coords, color: '#C6CB82' })
   }
 
