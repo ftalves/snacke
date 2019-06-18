@@ -12,7 +12,7 @@ const randomCoord = { x: 520, y: 280 }
 const keys = keypress()
 
 const run = state => {
-  if (isCollidingSelf(state.snake) || isCollidingBorder(state.snake)) {
+  if (isCollidingSelf(state) || isCollidingBorder(state)) {
     return alert(`GAME OVER! Score / Pontuação: ${state.score}`)
   }
 

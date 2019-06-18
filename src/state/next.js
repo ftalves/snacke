@@ -1,15 +1,14 @@
-import { last, pipe } from 'ramda'
+import { last, pipe, when } from 'ramda'
 
 import { eat } from '@/engine/eat'
 import { grow } from '@/engine/grow'
-import { move } from '@/engine/movement'
-
+import { move } from '@/engine/move'
 import { isCollidingFood } from '@/state/collision'
 
-const maybeEat = state =>
-  isCollidingFood(state) ? eat(state) : state
+const hasDigested = state => last(state.snake).digesting
 
-const maybeGrow = state =>
-  last(state.snake).digesting ? grow(state) : state
-
-export const next = pipe(move, maybeEat, maybeGrow)
+export const next = pipe(
+  move,
+  when(isCollidingFood, eat),
+  when(hasDigested, grow)
+)
