@@ -7,7 +7,7 @@ module.exports = {
   entry: './src/run.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: rootPath('dist')
   },
   resolve: {
     alias: {
