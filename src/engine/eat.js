@@ -1,4 +1,4 @@
-import { any, equals, map, addIndex, length, last, cond, always, splitAt, pipe, dropLast } from 'ramda'
+import { pipe } from 'ramda'
 import { respawnFood } from '@/engine/food'
 
 const startDigestion = state => {

@@ -1,4 +1,4 @@
-import { any, equals, map, addIndex, length, last } from 'ramda'
+import { any, equals } from 'ramda'
 import { canvas } from '@/draw/canvas'
 
 const isCollidingSelf = snake => {
@@ -13,6 +13,7 @@ const isCollidingBorder = snake => {
     || snake[0].coords.y > canvas.height - 40
 }
 
-const isCollidingFood = ({ snake, food }) => equals(snake[0].coords, food.coords)
+const isCollidingFood = ({ snake, food }) =>
+  equals(snake[0].coords, food.coords)
 
 export { isCollidingSelf, isCollidingFood, isCollidingBorder }

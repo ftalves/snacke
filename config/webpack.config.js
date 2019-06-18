@@ -1,6 +1,6 @@
 const path = require('path')
 
-const rootPath = p => path.resolve(__dirname, `${p}`)
+const rootPath = p => path.resolve(__dirname, `../${p}`)
 
 module.exports = {
   mode: 'development',

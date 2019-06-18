@@ -1,5 +1,3 @@
-import { any, equals } from 'ramda'
-
 import { keypress } from '@/io'
 import { SIZE_UNIT, TICK_INTERVAL, RIGHT } from '@/defaults'
 
@@ -20,7 +18,6 @@ const run = state => {
 
   clearCanvas()
   draw(state)
-  // setTimeout(() => run(next(state, keys.direction())), TICK_INTERVAL)
   setTimeout(() => run(next({
     ...state,
     direction: keys.direction(),

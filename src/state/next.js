@@ -1,9 +1,8 @@
-import { any, equals, map, addIndex, length, last, pipe } from 'ramda'
+import { last, pipe } from 'ramda'
 
-import { respawn } from '@/engine/food'
-import { move } from '@/engine/movement'
-import { grow } from '@/engine/grow'
 import { eat } from '@/engine/eat'
+import { grow } from '@/engine/grow'
+import { move } from '@/engine/movement'
 
 import { isCollidingFood } from '@/state/collision'
 

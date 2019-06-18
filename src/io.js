@@ -1,5 +1,5 @@
 import { any, equals } from 'ramda'
-import { UP, DOWN, LEFT, RIGHT, SIZE_UNIT } from '@/defaults'
+import { UP, DOWN, LEFT, RIGHT } from '@/defaults'
 
 const directionIsValid = (prevDirection, nextDirection) => ({
   37: !(nextDirection == 39),
@@ -17,9 +17,7 @@ const keypress = () => {
     direction = canChangeDirection ? keyCode : direction
   })
 
-  return {
-    direction: () => direction
-  }
+  return { direction: () => direction }
 }
 
 export { keypress }

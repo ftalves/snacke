@@ -1,4 +1,4 @@
-import { any, equals, map, addIndex, length, last, cond, always, splitAt, pipe, dropLast } from 'ramda'
+import { last, pipe, dropLast } from 'ramda'
 
 const endDigestion = state => ({
   ...state,
@@ -8,7 +8,7 @@ const endDigestion = state => ({
       coords: last(state.snake).coords,
       digesting: false,
     },
-  ]
+  ],
 })
 
 const appendTail = state => ({
@@ -16,7 +16,7 @@ const appendTail = state => ({
   snake: [
     ...state.snake,
     state.trail,
-  ]
+  ],
 })
 
 const grow = pipe(endDigestion, appendTail)
