@@ -5,7 +5,7 @@ const endDigestion = state => ({
   snake: [
     ...dropLast(1, state.snake),
     {
-      coords: last(state.snake).coords,
+      pos: last(state.snake).pos,
       digesting: false,
     },
   ],

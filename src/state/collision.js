@@ -8,12 +8,12 @@ const isCollidingSelf = ({ snake }) => {
 }
 
 const isCollidingBorder = ({ snake }) =>
-  snake[0].coords.x > canvas.width - SIZE_UNIT
-  || snake[0].coords.x < 0
-  || snake[0].coords.y < 0
-  || snake[0].coords.y > canvas.height - SIZE_UNIT
+  snake[0].pos.x > canvas.width - SIZE_UNIT
+  || snake[0].pos.x < 0
+  || snake[0].pos.y < 0
+  || snake[0].pos.y > canvas.height - SIZE_UNIT
 
 const isCollidingFood = ({ snake, food }) =>
-  equals(snake[0].coords, food.coords)
+  equals(snake[0].pos, food.pos)
 
 export { isCollidingSelf, isCollidingFood, isCollidingBorder }

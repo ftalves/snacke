@@ -7,7 +7,7 @@ import { clearCanvas } from '@/draw/canvas'
 import { next } from '@/state/next'
 import { isCollidingSelf, isCollidingBorder } from '@/state/collision'
 
-const randomCoord = { x: 520, y: 280 }
+const randomPos = { x: 520, y: 280 }
 
 const keys = keypress()
 
@@ -27,12 +27,12 @@ const run = state => {
 run({
   direction: RIGHT,
   snake: [
-    { coords: { x: 280, y: 400 } },
-    { coords: { x: 280 - SIZE_UNIT,       y: 400 } },
-    { coords: { x: 280 - (SIZE_UNIT * 2), y: 400 } },
-    { coords: { x: 280 - (SIZE_UNIT * 3), y: 400 } },
+    { pos: { x: 280, y: 400 } },
+    { pos: { x: 280 - SIZE_UNIT,       y: 400 } },
+    { pos: { x: 280 - (SIZE_UNIT * 2), y: 400 } },
+    { pos: { x: 280 - (SIZE_UNIT * 3), y: 400 } },
   ],
-  trail: { coords: { x: 280 - (SIZE_UNIT * 4), y: 400 } },
-  food: { coords: randomCoord },
+  trail: { pos: { x: 280 - (SIZE_UNIT * 4), y: 400 } },
+  food: { pos: randomPos },
   score: 0,
 })

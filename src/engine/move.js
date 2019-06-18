@@ -12,14 +12,14 @@ const moveHead = ({ x, y }, direction) => cond([
 
 const generateTrail = state => ({
   ...state,
-  trail: { coords: last(state.snake).coords },
+  trail: { pos: last(state.snake).pos },
 })
 
 const moveBody = state => ({
   ...state,
   snake: [
     ...mapIndexed((slice, i) => i == 0 ? {
-      coords: moveHead(slice.coords, state.direction),
+      pos: moveHead(slice.pos, state.direction),
     } : state.snake[i - 1], state.snake),
   ],
 })
