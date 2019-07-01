@@ -1,37 +1,43 @@
-import { ctx } from '@/draw/canvas'
-import { SIZE_UNIT } from '@/defaults'
+import { PIXEL_RATIO } from '@/defaults'
+import { ctx, canvas, gridToCanvas } from '@/draw/canvas'
 
 const draw = runDrawing => {
   ctx.beginPath()
   runDrawing()
   ctx.closePath()
 }
+
 const drawHead = ({ pos }) => draw(() => {
+  const { x, y } = gridToCanvas(pos)
+  const radius = PIXEL_RATIO / 2
+
   ctx.fillStyle = '#AAFFA0'
-  ctx.fillRect(pos.x, pos.y, SIZE_UNIT, SIZE_UNIT)
+  ctx.arc(x, y, radius, 0, 2 * Math.PI, false)
+  ctx.fill()
 })
 
 const drawBody = ({ pos, digesting }) => draw(() => {
+  const { x, y } = gridToCanvas(pos)
+  const radius = (!digesting ? PIXEL_RATIO : PIXEL_RATIO * 1.5) / 2
+
   ctx.fillStyle = '#AAFFA0'
-  ctx.fillRect(pos.x, pos.y, SIZE_UNIT, SIZE_UNIT)
-
-  if (digesting) {
-    return drawFood({ pos, color: '#C6CB82' })
-  }
-
-  const spotRadius = SIZE_UNIT / 4
-  const spotX = pos.x + (SIZE_UNIT / 2)
-  const spotY = pos.y + (SIZE_UNIT / 2)
-  ctx.fillStyle = '#FFF'
-  ctx.arc(spotX, spotY, spotRadius, 0, 2 * Math.PI, false)
+  ctx.arc(x, y, radius, 0, 2 * Math.PI, false)
   ctx.fill()
 })
 
-const drawFood = ({ pos, color }) => draw(() => {
-  const radius = SIZE_UNIT / 2
-  ctx.fillStyle = color || '#FF6347'
-  ctx.arc(pos.x + radius, pos.y + radius, radius, 0, 2 * Math.PI, false)
+const drawFood = ({ pos }) => draw(() => {
+  const { x, y } = gridToCanvas(pos)
+  const radius = PIXEL_RATIO / 2
+
+  ctx.fillStyle = '#FF6347'
+  ctx.arc(x, y, radius, 0, 2 * Math.PI, false)
   ctx.fill()
 })
 
-export { drawHead, drawBody, drawFood }
+const drawBorder = () => draw(() => {
+  ctx.lineWidth = PIXEL_RATIO
+  ctx.strokeStyle = '#AAA'
+  ctx.strokeRect(0, 0, canvas.width, canvas.height)
+})
+
+export { drawHead, drawBody, drawFood, drawBorder }

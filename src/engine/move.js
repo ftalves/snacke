@@ -1,13 +1,13 @@
 import { equals, map, addIndex, last, cond, always, pipe } from 'ramda'
-import { SIZE_UNIT } from '@/defaults'
+import { UP, DOWN, LEFT, RIGHT } from '@/defaults'
 
 const mapIndexed = addIndex(map)
 
 const moveHead = ({ x, y }, direction) => cond([
-  [equals(37), always({ x: x - SIZE_UNIT, y })],
-  [equals(38), always({ y: y - SIZE_UNIT, x })],
-  [equals(39), always({ x: x + SIZE_UNIT, y })],
-  [equals(40), always({ y: y + SIZE_UNIT, x })],
+  [equals(UP), always({ y: y - 1, x })],
+  [equals(DOWN), always({ y: y + 1, x })],
+  [equals(LEFT), always({ x: x - 1, y })],
+  [equals(RIGHT), always({ x: x + 1, y })],
 ])(direction)
 
 const generateTrail = state => ({

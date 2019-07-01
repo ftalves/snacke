@@ -1,13 +1,11 @@
 import { keypress } from '@/io'
-import { SIZE_UNIT, TICK_INTERVAL, RIGHT } from '@/defaults'
+import { TICK_INTERVAL, RIGHT } from '@/defaults'
 
 import { draw } from '@/draw/world'
 import { clearCanvas } from '@/draw/canvas'
 
 import { next } from '@/state/next'
 import { isCollidingSelf, isCollidingBorder } from '@/state/collision'
-
-const randomPos = { x: 520, y: 280 }
 
 const keys = keypress()
 
@@ -24,15 +22,16 @@ const run = state => {
   })), TICK_INTERVAL)
 }
 
+//todo: add better defaults
 run({
   direction: RIGHT,
   snake: [
-    { pos: { x: 280, y: 400 } },
-    { pos: { x: 280 - SIZE_UNIT,       y: 400 } },
-    { pos: { x: 280 - (SIZE_UNIT * 2), y: 400 } },
-    { pos: { x: 280 - (SIZE_UNIT * 3), y: 400 } },
+    { pos: { x: 8, y: 5 } },
+    { pos: { x: 7, y: 5 } },
+    { pos: { x: 6, y: 5 } },
+    { pos: { x: 5, y: 5 } },
   ],
-  trail: { pos: { x: 280 - (SIZE_UNIT * 4), y: 400 } },
-  food: { pos: randomPos },
+  trail: { pos: { x: 4, y: 5 } },
+  food: { pos: { x: 12, y: 6 } },
   score: 0,
 })

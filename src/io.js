@@ -1,18 +1,19 @@
 import { any, equals } from 'ramda'
 import { UP, DOWN, LEFT, RIGHT } from '@/defaults'
 
-const directionIsValid = (prevDirection, nextDirection) => ({
-  37: !(nextDirection == 39),
-  38: !(nextDirection == 40),
-  39: !(nextDirection == 37),
-  40: !(nextDirection == 38),
+const notTurningBack = (prevDirection, nextDirection) => ({
+  [UP]: !(nextDirection == DOWN),
+  [DOWN]: !(nextDirection == UP),
+  [LEFT]: !(nextDirection == RIGHT),
+  [RIGHT]: !(nextDirection == LEFT),
 })[prevDirection]
 
 const keypress = () => {
   let direction = RIGHT
   document.addEventListener('keydown', ({ keyCode }) => {
-    const canChangeDirection = directionIsValid(direction, keyCode)
-      && any(equals(keyCode), [UP, DOWN, LEFT, RIGHT])
+    const directionExists = any(equals(keyCode), [UP, DOWN, LEFT, RIGHT])
+    const canChangeDirection = directionExists
+      && notTurningBack(direction, keyCode)
 
     direction = canChangeDirection ? keyCode : direction
   })

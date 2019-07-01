@@ -1,11 +1,10 @@
 import { last, pipe, when } from 'ramda'
-
 import { eat } from '@/engine/eat'
 import { grow } from '@/engine/grow'
 import { move } from '@/engine/move'
 import { isCollidingFood } from '@/state/collision'
 
-const hasDigested = state => last(state.snake).digesting
+const hasDigested = state => last(state.snake).digesting // state/snake.js?
 
 export const next = pipe(
   move,
