@@ -11,8 +11,10 @@ A little snake game made with Ramda.js.
 - Add trail concept (aids on growing)
 - Add world border
 
-## TODO:
+#### 2019-07-01
 - Smart food respawn
+
+## TODO:
 - Fix multiple keypresses bug
 - Add mirror movement when hitting walls
 - Add menu screen
