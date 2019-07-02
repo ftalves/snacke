@@ -21,7 +21,7 @@ const keypress = () => {
         && notTurningBack(prevDirection, key)
 
       return canChangeDirection ? key : prevDirection
-    }
+    },
   }
 }
 
