@@ -13,9 +13,9 @@ A little snake game made with Ramda.js.
 
 #### 2019-07-01
 - Smart food respawn
+- Fix multiple keypresses bug
 
 ## TODO:
-- Fix multiple keypresses bug
 - Add mirror movement when hitting walls
 - Add menu screen
 - Add current score and high scores

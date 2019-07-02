@@ -9,16 +9,20 @@ const notTurningBack = (prevDirection, nextDirection) => ({
 })[prevDirection]
 
 const keypress = () => {
-  let direction = RIGHT
+  let key = RIGHT
   document.addEventListener('keydown', ({ keyCode }) => {
-    const directionExists = any(equals(keyCode), [UP, DOWN, LEFT, RIGHT])
-    const canChangeDirection = directionExists
-      && notTurningBack(direction, keyCode)
-
-    direction = canChangeDirection ? keyCode : direction
+    key = keyCode
   })
 
-  return { direction: () => direction }
+  return {
+    direction: prevDirection => {
+      const directionExists = any(equals(key), [UP, DOWN, LEFT, RIGHT])
+      const canChangeDirection = directionExists
+        && notTurningBack(prevDirection, key)
+
+      return canChangeDirection ? key : prevDirection
+    }
+  }
 }
 
 export { keypress }

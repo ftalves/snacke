@@ -18,7 +18,7 @@ const run = state => {
   draw(state)
   setTimeout(() => run(next({
     ...state,
-    direction: keys.direction(),
+    direction: keys.direction(state.direction),
   })), TICK_INTERVAL)
 }
 
