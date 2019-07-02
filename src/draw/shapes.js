@@ -1,5 +1,6 @@
+import { gridToCanvas } from '@/grid'
 import { PIXEL_RATIO } from '@/defaults'
-import { ctx, canvas, gridToCanvas } from '@/draw/canvas'
+import { ctx, canvas } from '@/draw/canvas'
 
 const draw = runDrawing => {
   ctx.beginPath()

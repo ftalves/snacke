@@ -3,7 +3,7 @@ import { respawnFood } from '@/engine/food'
 
 const startDigestion = state => {
   const [head, ...body] = state.snake
-
+  // console.log(state);
   return {
     ...state,
     snake: [

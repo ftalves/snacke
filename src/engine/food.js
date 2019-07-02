@@ -1,21 +1,25 @@
+import { any, pathEq } from 'ramda'
+import { isWithinBorders } from '@/grid'
 import { GRID_WIDTH, GRID_HEIGHT } from '@/defaults'
 
-const randomPos = size => {
-  return Math.round(Math.random() * size)
+const positionIsAvailable = (pos, { snake }) =>
+  !any(pathEq(['pos'], pos), snake)
 
-  // const max = size - SIZE_UNIT
-  // const validPositions = size / SNAKE_WIDTH
-  // const res = Math.round(Math.random() * validPositions) * SNAKE_WIDTH
-  //
-  // return res + SIZE_UNIT
+const randomize = max => Math.round(Math.random() * max)
+
+const randomPos = state => {
+  const pos = {
+    x: randomize(GRID_WIDTH),
+    y: randomize(GRID_HEIGHT),
+  }
+  const posIsValid = isWithinBorders(pos) && positionIsAvailable(pos, state)
+
+  return posIsValid ? pos : randomPos(state)
 }
 
 const respawnFood = state => ({
   ...state,
-  food: { pos: {
-    x: randomPos(GRID_WIDTH),
-    y: randomPos(GRID_HEIGHT),
-  } },
+  food: { pos: randomPos(state) },
 })
 
 export { respawnFood }
