@@ -14,7 +14,7 @@ const run = async state => {
   drawWorld(state)
 
   if (isCrashing(state)) {
-    await drawGameOverScreen()
+    await drawGameOverScreen(state)
     await anyKeyPressed()
     return run(INITIAL_STATE)
   }

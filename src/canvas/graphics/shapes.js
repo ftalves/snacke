@@ -1,6 +1,6 @@
 import { gridToCanvas } from '@/grid'
-import { PIXEL_RATIO } from '@/defaults'
 import { canvas, draw } from '@/canvas'
+import { PIXEL_RATIO } from '@/defaults'
 
 //todo: add dynamic positioning
 export const drawDarkerBackground = () => draw(ctx => {

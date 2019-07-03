@@ -1,4 +1,8 @@
-import { drawGameOver, drawInstructions } from '@/canvas/graphics/text'
+import {
+  drawGameOver,
+  drawInstructions,
+  drawScore
+} from '@/canvas/graphics/text'
 import {
   drawHead,
   drawBody,
@@ -7,9 +11,9 @@ import {
   drawDarkerBackground,
 } from '@/canvas/graphics/shapes'
 
-export const drawGameOverScreen = async () => {
+export const drawGameOverScreen = async ({ score }) => {
   drawDarkerBackground()
-  drawGameOver()
+  drawGameOver(score)
   return new Promise(resolve => {
     setTimeout(() => {
       resolve(drawInstructions())
@@ -17,10 +21,11 @@ export const drawGameOverScreen = async () => {
   })
 }
 
-export const drawWorld = ({ snake, food }) => {
+export const drawWorld = ({ snake, food, score }) => {
   const [head, ...body] = snake
 
   drawBorder()
+  drawScore(score)
   drawFood(food)
 
   drawHead(head)
