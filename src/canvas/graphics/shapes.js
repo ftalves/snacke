@@ -1,32 +1,14 @@
 import { gridToCanvas } from '@/grid'
 import { PIXEL_RATIO } from '@/defaults'
-import { ctx, canvas } from '@/draw/canvas'
-
-const draw = runDrawing => {
-  ctx.beginPath()
-  runDrawing()
-  ctx.closePath()
-}
+import { canvas, draw } from '@/canvas'
 
 //todo: add dynamic positioning
-const increaseOpacity = () => draw(() => {
+export const drawDarkerBackground = () => draw(ctx => {
   ctx.fillStyle = 'rgba(255, 255, 255, 0.3)'
   ctx.fillRect(0, 0, canvas.width, canvas.height)
 })
 
-const drawGameOver = () => draw(() => {
-  ctx.fillStyle = '#FFA07A'
-  ctx.font = '50px Arial'
-  ctx.fillText('GAME OVER', 100, 300)
-})
-
-const drawInstructions = () => draw(() => {
-  ctx.fillStyle = '#FFA07A'
-  ctx.font = '20px Arial'
-  ctx.fillText('Pressione qualquer botão para começar...', 80, 350)
-})
-
-const drawHead = ({ pos }) => draw(() => {
+export const drawHead = ({ pos }) => draw(ctx => {
   const { x, y } = gridToCanvas(pos)
   const radius = PIXEL_RATIO / 2
 
@@ -35,7 +17,7 @@ const drawHead = ({ pos }) => draw(() => {
   ctx.fill()
 })
 
-const drawBody = ({ pos, digesting }) => draw(() => {
+export const drawBody = ({ pos, digesting }) => draw(ctx => {
   const { x, y } = gridToCanvas(pos)
   const radius = (!digesting ? PIXEL_RATIO : PIXEL_RATIO * 1.5) / 2
 
@@ -44,7 +26,7 @@ const drawBody = ({ pos, digesting }) => draw(() => {
   ctx.fill()
 })
 
-const drawFood = ({ pos }) => draw(() => {
+export const drawFood = ({ pos }) => draw(ctx => {
   const { x, y } = gridToCanvas(pos)
   const radius = PIXEL_RATIO / 2
 
@@ -53,18 +35,8 @@ const drawFood = ({ pos }) => draw(() => {
   ctx.fill()
 })
 
-const drawBorder = () => draw(() => {
+export const drawBorder = () => draw(ctx => {
   ctx.lineWidth = PIXEL_RATIO
   ctx.strokeStyle = '#AAA'
   ctx.strokeRect(0, 0, canvas.width, canvas.height)
 })
-
-export {
-  increaseOpacity,
-  drawGameOver,
-  drawInstructions,
-  drawHead,
-  drawBody,
-  drawFood,
-  drawBorder,
-}

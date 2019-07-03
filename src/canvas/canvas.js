@@ -6,6 +6,12 @@ canvas.height = GRID_HEIGHT * PIXEL_RATIO
 
 const ctx = canvas.getContext('2d')
 
+const draw = runDrawing => {
+  ctx.beginPath()
+  runDrawing(ctx)
+  ctx.closePath()
+}
+
 const clearCanvas = () => ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-export { canvas, ctx, clearCanvas }
+export { canvas, draw, clearCanvas }

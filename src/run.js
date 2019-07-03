@@ -1,26 +1,13 @@
 import { anyKeyPressed, directionGetter } from '@/io'
-import { TICK_INTERVAL, RIGHT } from '@/defaults'
+import { TICK_INTERVAL, INITIAL_STATE } from '@/defaults'
 
-import { drawGameOverScreen, drawWorld } from '@/draw/world'
-import { clearCanvas } from '@/draw/canvas'
+import { drawGameOverScreen, drawWorld } from '@/canvas/draw'
+import { clearCanvas } from '@/canvas'
 
 import { next } from '@/state/next'
 import { isCrashing } from '@/state/collision'
 
 const newDirection = directionGetter()
-
-const initialState = {
-  direction: RIGHT,
-  snake: [
-    { pos: { x: 8, y: 5 } },
-    { pos: { x: 7, y: 5 } },
-    { pos: { x: 6, y: 5 } },
-    { pos: { x: 5, y: 5 } },
-  ],
-  trail: { pos: { x: 4, y: 5 } },
-  food: { pos: { x: 12, y: 6 } },
-  score: 0,
-}
 
 const run = async state => {
   clearCanvas()
@@ -29,13 +16,13 @@ const run = async state => {
   if (isCrashing(state)) {
     await drawGameOverScreen()
     await anyKeyPressed()
-    return run(initialState)
+    return run(INITIAL_STATE)
   }
 
   setTimeout(() => run(next({
     ...state,
-    direction: newDirection(state),
+    direction: newDirection(state.direction),
   })), TICK_INTERVAL)
 }
 
-run(initialState)
+run(INITIAL_STATE)

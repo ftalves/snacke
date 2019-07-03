@@ -8,3 +8,16 @@ export const RIGHT = 39
 export const DOWN  = 40
 
 export const TICK_INTERVAL = 100
+
+export const INITIAL_STATE = {
+  direction: RIGHT,
+  snake: [
+    { pos: { x: 8, y: 5 } },
+    { pos: { x: 7, y: 5 } },
+    { pos: { x: 6, y: 5 } },
+    { pos: { x: 5, y: 5 } },
+  ],
+  trail: { pos: { x: 4, y: 5 } },
+  food: { pos: { x: 12, y: 6 } },
+  score: 0,
+}

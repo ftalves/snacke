@@ -8,29 +8,21 @@ const notTurningBack = (prevDirection, nextDirection) => ({
   [RIGHT]: !(nextDirection == LEFT),
 })[prevDirection]
 
-const keyPressed = callback => {
-  document.addEventListener('keydown', ({ keyCode }) => {
-    callback(keyCode)
-  })
-}
-
-const anyKeyPressed = () => new Promise(resolve => {
-  document.addEventListener('keydown', ({ keyCode }) => {
-    resolve(keyCode)
-  }, { once: true })
-})
-
 const directionGetter = () => {
-  let lastKey = RIGHT
-  keyPressed(key => lastKey = key)
+  let lastKeyPress = RIGHT
+  document.addEventListener('keydown', ({ keyCode }) => lastKeyPress = keyCode)
 
-  return ({ direction }) => {
-    const directionExists = any(equals(lastKey), [UP, DOWN, LEFT, RIGHT])
+  return lastDirection => {
+    const directionExists = any(equals(lastKeyPress), [UP, DOWN, LEFT, RIGHT])
     const canChangeDirection = directionExists
-      && notTurningBack(direction, lastKey)
+      && notTurningBack(lastDirection, lastKeyPress)
 
-    return canChangeDirection ? lastKey : direction
+    return canChangeDirection ? lastKeyPress : lastDirection
   }
 }
+
+const anyKeyPressed = () => new Promise(resolve =>
+  document.addEventListener('keydown', resolve, { once: true })
+)
 
 export { anyKeyPressed, directionGetter }

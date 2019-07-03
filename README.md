@@ -18,7 +18,9 @@ A little snake game made with Ramda.js.
 #### 2019-07-02
 - Add menu screen
 
-## TODO:
+#### 2019-07-03
 - Refactor IO and promise stuff
+
+## TODO:
 - Add current score and high scores
 - Add better graphics
