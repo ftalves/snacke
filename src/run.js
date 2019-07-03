@@ -1,29 +1,15 @@
-import { keypress } from '@/io'
+import { anyKeyPressed, directionGetter } from '@/io'
 import { TICK_INTERVAL, RIGHT } from '@/defaults'
 
-import { draw } from '@/draw/world'
+import { drawGameOverScreen, drawWorld } from '@/draw/world'
 import { clearCanvas } from '@/draw/canvas'
 
 import { next } from '@/state/next'
-import { isCollidingSelf, isCollidingBorder } from '@/state/collision'
+import { isCrashing } from '@/state/collision'
 
-const keys = keypress()
+const newDirection = directionGetter()
 
-const run = state => {
-  if (isCollidingSelf(state) || isCollidingBorder(state)) {
-    return alert(`GAME OVER! Score / Pontuação: ${state.score}`)
-  }
-
-  clearCanvas()
-  draw(state)
-  setTimeout(() => run(next({
-    ...state,
-    direction: keys.direction(state.direction),
-  })), TICK_INTERVAL)
-}
-
-//todo: add better defaults
-run({
+const initialState = {
   direction: RIGHT,
   snake: [
     { pos: { x: 8, y: 5 } },
@@ -34,4 +20,22 @@ run({
   trail: { pos: { x: 4, y: 5 } },
   food: { pos: { x: 12, y: 6 } },
   score: 0,
-})
+}
+
+const run = async state => {
+  clearCanvas()
+  drawWorld(state)
+
+  if (isCrashing(state)) {
+    await drawGameOverScreen()
+    await anyKeyPressed()
+    return run(initialState)
+  }
+
+  setTimeout(() => run(next({
+    ...state,
+    direction: newDirection(state),
+  })), TICK_INTERVAL)
+}
+
+run(initialState)

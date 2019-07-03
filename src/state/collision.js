@@ -1,5 +1,8 @@
-import { any, equals } from 'ramda'
+import { any, equals, anyPass } from 'ramda'
 import { isWithinBorders } from '@/grid'
+
+const isCollidingFood = ({ snake, food }) =>
+  equals(snake[0].pos, food.pos)
 
 const isCollidingSelf = ({ snake }) => {
   const [head, ...tail] = snake
@@ -8,7 +11,6 @@ const isCollidingSelf = ({ snake }) => {
 
 const isCollidingBorder = ({ snake }) => !isWithinBorders(snake[0].pos)
 
-const isCollidingFood = ({ snake, food }) =>
-  equals(snake[0].pos, food.pos)
+const isCrashing = anyPass([isCollidingSelf, isCollidingBorder])
 
-export { isCollidingSelf, isCollidingFood, isCollidingBorder }
+export { isCrashing, isCollidingFood }
