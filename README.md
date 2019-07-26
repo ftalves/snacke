@@ -21,6 +21,9 @@ A little snake game made with Ramda.js.
 #### 2019-07-03
 - Refactor IO and promise stuff
 
+#### 2019-07-25
+- Add mobile support (gamepad)
+
 ## TODO:
 - Add current score and high scores
 - Add better graphics

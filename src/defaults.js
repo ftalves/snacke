@@ -7,7 +7,7 @@ export const UP    = 38
 export const RIGHT = 39
 export const DOWN  = 40
 
-export const TICK_INTERVAL = 100
+export const TICK_INTERVAL = 110
 
 export const INITIAL_STATE = {
   direction: RIGHT,

@@ -1,7 +1,7 @@
 import {
   drawGameOver,
   drawInstructions,
-  drawScore
+  drawScore,
 } from '@/canvas/graphics/text'
 import {
   drawHead,
