@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico" />
-    <link rel="stylesheet" href="assets/css/game.css" charset="utf-8">
+    <meta charset='utf-8' name='viewport' content='width=device-width, user-scalable=no'>
+    <link rel='shortcut icon' type='image/x-icon' href='assets/img/favicon.ico' />
+    <link rel='stylesheet' href='assets/css/game.css' charset='utf-8'>
     <title>Snacke</title>
   </head>
 
   <body>
     <canvas id='game'></canvas>
+    <div id='pad'>
+      <img src='assets/img/up.svg' id='up'       class='arrow'>
+      <img src='assets/img/left.svg' id='left'   class='arrow'>
+      <img src='assets/img/right.svg' id='right' class='arrow'>
+      <img src='assets/img/down.svg' id='down'   class='arrow'>
+    </div>
   </body>
 
-  <script type="text/javascript" src="dist/bundle.js"></script>
+  <script type='text/javascript' src='dist/bundle.js'></script>
 </html>

@@ -1,9 +1,75 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 body {
   display: flex;
-  flex-direction: column;
+  flex-flow: column;
   align-items: center;
 }
 
 #game {
   background: #000;
+}
+
+/* MOBILE GAME PAD */
+#pad {
+  display: none;
+  position: relative;
+  width: 80vw;
+  height: 80vw;
+  opacity: 0.4;
+}
+
+.arrow {
+  max-width: 45%;
+  max-height: 45%;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+}
+
+#up {
+  top: 0;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+#down {
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+#left {
+  left: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+#right {
+  right: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+@media (orientation: portrait) {
+  #game {
+    width: 95vw;
+    height: 95vw;
+  }
+}
+
+@media (orientation: landscape) {
+  #game {
+    width: 95vh;
+    height: 95vh;
+  }
+}
+
+@media (max-width: 480px) {
+  #pad {
+    display: block;
+  }
 }
